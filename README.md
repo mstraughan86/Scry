@@ -3,6 +3,9 @@ My little scrying object.
 
 This is designed to be a lens for whatever I wish my eyes upon.
 
+Introduction:
+I want to create a simple, single page view for all episodes of a given television series. Entering into any one of the episodes will...
+
 Currently looking at serving video. Up next might be audio.
 
 ## Technology Stack
