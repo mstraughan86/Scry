@@ -6,6 +6,9 @@ This is designed to be a lens for whatever I wish my eyes upon.
 Introduction:
 I want to create a simple, single page view for all episodes of a given television series. Entering into any one of the episodes will...
 
+Motivation:
+My ISP Cox put a 1TB per month cap on my internet usage. I've never experienced this before in my life. I was shocked to find that my household went over this cap in the first month. In order to cut down on data usage, I aimed to minimize re-streaming data as we use a lot of video streaming. Thus, this little artifact was constructed to suit that purpose.
+
 Currently looking at serving video. Up next might be audio.
 
 ## Technology Stack
