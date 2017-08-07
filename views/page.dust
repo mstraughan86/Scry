@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{title}</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {>"schema-org" /}
+
+    <!-- Google Tag Manager -->
+    <!-- End Google Tag Manager -->
+
+    <script src="/js/things.js"></script>
+
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <!-- End Google Tag Manager (noscript) -->
+    {>header /}
+    {+body /}
+    {>footer /}
+  </body>
+</html>

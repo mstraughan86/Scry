@@ -1,0 +1,9 @@
+{#Schema}
+<script type='application/ld+json'>
+  {
+    "@context": "http://schema.org/",
+    "@type": "{type}",
+  }
+</script>
+{:else}
+{/Schema}

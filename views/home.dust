@@ -1,0 +1,5 @@
+{>"page" /}
+<link href="/css/home.css" rel="stylesheet" type="text/css" />
+{<body}
+This is the homepage.
+{/body}

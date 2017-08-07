@@ -1,0 +1,36 @@
+{
+  "name": "Scry",
+  "version": "0.0.1",
+  "description": "My little scrying object.",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstraughan86/Scry.git"
+  },
+  "author": "Michael Straughan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mstraughan86/Scry/issues"
+  },
+  "homepage": "https://github.com/mstraughan86/Scry#readme",
+  "dependencies": {
+    "async": "^2.4.0",
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "express-basic-auth": "^1.1.1",
+    "express-dustjs": "^1.1.1",
+    "fs": "0.0.1-security",
+    "javascript-obfuscator": "^0.9.4",
+    "moment": "^2.18.1",
+    "node-uuid": ">= 1.4.1",
+    "path": "^0.12.7",
+    "request": ">=2.8.0",
+    "shelljs": "^0.7.8",
+    "slack-node": "^0.1.8",
+    "xml2js": "^0.4.17"
+  }
+}
