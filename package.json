@@ -29,6 +29,7 @@
     "node-uuid": ">= 1.4.1",
     "path": "^0.12.7",
     "request": ">=2.8.0",
+    "serve-favicon": "^2.4.3",
     "shelljs": "^0.7.8",
     "slack-node": "^0.1.8",
     "xml2js": "^0.4.17"

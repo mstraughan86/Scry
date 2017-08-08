@@ -1,0 +1,11 @@
+{>"page" /}
+<link href="/css/error.css" rel="stylesheet" type="text/css" />
+{<body}
+<div>{title}</div>
+<div>{error.type}</div>
+<div>{error.headers}</div>
+<div>{error.url}</div>
+<div>{error.httpVersion}</div>
+<div>{error.method}</div>
+<div>{error.message}</div>
+{/body}

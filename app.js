@@ -4,12 +4,12 @@ let express = require('express');
 
 let app = express();
 let path = require('path');
+const util = require('util');
 let dust = require('express-dustjs');
 let request = require('request');
-
+let favicon = require('serve-favicon');
 let bodyParser = require('body-parser');
-var routes = require('./routes/routes');
-//var slack = require('./utilities/slackApi');
+let routes = require('./routes/routes');
 //let cookieParser = require('cookie-parser');
 
 //dotenv.config(); // Attaching things to process.env
@@ -41,40 +41,35 @@ app.set('views', path.resolve(__dirname, './views'));
 //http://expressjs.com/en/api.html
 //app.use([path,] callback [, callback...])
 
-app.use(favicon(path.join(__dirname,'public','images','favicon.ico'))); // Set a custom favicon
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico'))); // Set favicon
 app.use(express.static(__dirname + '/public')); // Public files: CSS, JS, Images
 app.use('/', routes); // Routes
-
-// Error handling routes
-//404
-app.use(function(req, res) {
-  let error = {
-    type: "404 Not found page",
-    headers : req.headers,
-    url: req.url,
-    httpVersion: req.httpVersion,
-    method: req.method
-  };
-  //slack.sendMessage(JSON.stringify(error, null, 3));
-  res.status(404).render('404', {title: 'Page Not Found.'});
-});
-
-//500
-app.use(function(error, req, res, next) {
+//app.use('/videos', videos); // Example on how I can further segregate the routes.
+app.use(function (req, res, next) {
   let errorJSON = {
-    type: "500 Interval Server Error",
-    headers : req.headers,
-    url: req.url,
-    httpVersion: req.httpVersion,
-    method: req.method,
-    message: error.message,
+    title: 'Scry | 404\'d',
+    error: {
+      type: 404,
+      url: req.url,
+      method: req.method
+    }
   };
-  //slack.sendMessage(JSON.stringify(errorJSON, null, 3));
-  res.status(500).render('404', {title: 'Unexpected error, please try again.'});
+  res.status(404).render('error', errorJSON);
+});
+app.use(function (error, req, res, next) {
+  let errorJSON = {
+    title: 'Scry | 500\'d',
+    error: {
+      type: 500,
+      url: req.url,
+      method: req.method,
+      message: error.message
+    }
+  };
+  res.status(500).render('error', errorJSON);
 });
 
 let port = process.env.PORT || 3000;
 let server = app.listen(port, function () {
   console.log('Server running at http://127.0.0.1:' + port + '/');
 });
-
