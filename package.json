@@ -26,10 +26,12 @@
     "fs": "0.0.1-security",
     "javascript-obfuscator": "^0.9.4",
     "moment": "^2.18.1",
+    "node-sass-middleware": "^0.11.0",
     "node-uuid": ">= 1.4.1",
     "path": "^0.12.7",
     "request": ">=2.8.0",
     "serve-favicon": "^2.4.3",
+    "serve-static": "^1.12.4",
     "shelljs": "^0.7.8",
     "slack-node": "^0.1.8",
     "xml2js": "^0.4.17"

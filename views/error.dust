@@ -1,5 +1,5 @@
 {>"page" /}
-<link href="/css/error.css" rel="stylesheet" type="text/css" />
+<link href="/public/css/error.css" rel="stylesheet" type="text/css" />
 {<body}
 <div>{title}</div>
 <div>{error.type}</div>

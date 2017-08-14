@@ -1,27 +1,39 @@
-let express = require('express');
 //let dotenv = require('dotenv') // https://www.npmjs.com/package/dotenv
-
-let app = express();
+let request = require('request');
 let path = require('path');
 let util = require('util');
+let fs = require('fs');
+let express = require('express');
+let app = express();
 let dust = require('express-dustjs');
-let request = require('request');
+let sass = require('node-sass-middleware');
 let favicon = require('serve-favicon');
-let bodyParser = require('body-parser');
 let routes = require('./routes/routes');
+let serveStatic = require('serve-static');
+//let bodyParser = require('body-parser');
 //let cookieParser = require('cookie-parser');
+
 //dotenv.config(); // Attaching things to process.env
 
-/* DustJS Configuration ~~~~~~BEGIN */
-const dustInstance = dust._; // Created by 'express-dustjs'
+/* DustJS Configuration ~~~~~~ */
+const dustInstance = dust._; // Instance object to attach properties to.
 dustInstance.config.whitespace = true; // .../dustjs/wiki/Dust-Tutorial#controlling-whitespace-suppression
 dustInstance.helpers.test = function (chunk, context, bodies, params) {return chunk.write('This is a test!')};
-/* END~~~~~~ DustJS Configuration */
 
-/* ExpressJS Configuration ~~~~~~BEGIN */
+/* SASS Configuration ~~~~~~ */
+const sassConfig = { // https://github.com/sass/node-sass#options
+  src: path.join(__dirname, 'sass'),
+  dest: path.join(__dirname, 'public', 'css'),
+  outputStyle: 'expanded',
+  debug: false,
+  prefix: '' // https://stackoverflow.com/questions/30654312/why-node-sass-middleware-is-not-working
+};
+
+/* ExpressJS Configuration ~~~~~~ */
 app.engine('dust', dust.engine({useHelpers: true}));
 app.set('view engine', 'dust');
 app.set('views', path.resolve(__dirname, './views'));
+app.use('/css', sass(sassConfig));
 // Use body-parser to parse the body of post requests from json
 //app.use(bodyParser.json()); // support json encoded bodies
 //app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
@@ -38,16 +50,43 @@ app.set('views', path.resolve(__dirname, './views'));
 //
 //http://expressjs.com/en/api.html
 //app.use([path,] callback [, callback...])
-/* END~~~~~~ ExpressJS Configuration */
 
-/* Public Resources ~~~~~~BEGIN */
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico'))); // Set favicon
-app.use(express.static(__dirname + '/public')); // Public files: CSS, JS, Images
-/* END~~~~~~ Public Resources */
+/* Public Resources ~~~~~~ */
+app.use('/', favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico'))); // Set favicon
+app.use('/', express.static(path.join(__dirname, 'public'))); // Public files: CSS, JS, Images
 
-/* Routes ~~~~~~BEGIN */
-app.use('/', routes); // Routes
+/* Video Files ~~~~~~ */
+app.use('/files/:videoFile', function (req, res) {
+  let videoPath = path.join(__dirname, 'files', 'videos', 'mov_bbb.mp4');
+  let stat = fs.statSync(videoPath);
+  let total = stat.size;
+
+  if (req.headers['range']) {
+    let range = req.headers.range;
+    let parts = range.replace(/bytes=/, "").split("-");
+    let partialstart = parts[0];
+    let partialend = parts[1];
+
+    let start = parseInt(partialstart, 10);
+    let end = partialend ? parseInt(partialend, 10) : total-1;
+    let chunksize = (end-start)+1;
+    //console.log('RANGE: ' + start + ' - ' + end + ' = ' + chunksize);
+
+    let file = fs.createReadStream(videoPath, {start: start, end: end});
+    res.writeHead(206, { 'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
+    file.pipe(res);
+  } else {
+    //console.log('ALL: ' + total);
+    res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
+    fs.createReadStream(videoPath).pipe(res);
+  }
+});
+
+/* Routes ~~~~~~ */
+app.use('/', routes); // Static Routes
 //app.use('/videos', videos); // Example on how I can further segregate the routes.
+
+/* Errors ~~~~~~ */
 app.use(function (req, res, next) {
   let errorJSON = {
     title: 'Scry | 404\'d',
@@ -71,9 +110,8 @@ app.use(function (error, req, res, next) {
   };
   res.status(500).render('error', errorJSON);
 });
-/* END~~~~~~ Routes */
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3002;
 let server = app.listen(port, function () {
   console.log('Server running at http://127.0.0.1:' + port + '/');
 });

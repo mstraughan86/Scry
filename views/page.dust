@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>{title}</title>
-
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    {>"schema-org" /}
+    {>schema-org /}
 
     <!-- Google Tag Manager -->
     <!-- End Google Tag Manager -->
 
-    <!-- <script src="/js/things.js"></script> -->
+    <script src="/js/global.js"></script>
+    {+script /}
+    <link href="/css/global.css" rel="stylesheet" type="text/css"/>
+    {+link /}
 
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <!-- End Google Tag Manager (noscript) -->
-    {>header /}
-    {+body /}
-    {>footer /}
-  </body>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<!-- End Google Tag Manager (noscript) -->
+{>header /}
+{+body /}
+{>footer /}
+</body>
 </html>

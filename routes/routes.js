@@ -1,5 +1,4 @@
-let express = require('express');
-let app = express();
+let app = require('express')();
 
 app.get('/', (req, res) => {
   res.render('home', {
@@ -8,7 +7,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/video/:videoId', (req, res, next) => {
-  res.render('video', {});
+  res.render('video', {
+    title: 'Scry | Video Title Here'
+  });
 });
 
 module.exports = app;

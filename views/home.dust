@@ -1,5 +1,10 @@
-{>"page" /}
+{>page /}
+{<script}
+<!-- <link href="/css/home.js" rel="stylesheet" type="text/css" /> -->
+{/script}
+{<link}
 <link href="/css/home.css" rel="stylesheet" type="text/css" />
+{/link}
 {<body}
-This is the homepage.
+<h1>Homepage</h1>
 {/body}
