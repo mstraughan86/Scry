@@ -9,11 +9,13 @@ let dust = require('express-dustjs');
 let sass = require('node-sass-middleware');
 let favicon = require('serve-favicon');
 let routes = require('./routes/routes');
+let seo = require('./routes/seo');
 let serveStatic = require('serve-static');
 //let bodyParser = require('body-parser');
 //let cookieParser = require('cookie-parser');
 
 //dotenv.config(); // Attaching things to process.env
+//can set things like NODE_ENV for production, development, etc.
 
 /* DustJS Configuration ~~~~~~ */
 const dustInstance = dust._; // Instance object to attach properties to.
@@ -34,6 +36,7 @@ app.engine('dust', dust.engine({useHelpers: true}));
 app.set('view engine', 'dust');
 app.set('views', path.resolve(__dirname, './views'));
 app.use('/css', sass(sassConfig));
+
 // Use body-parser to parse the body of post requests from json
 //app.use(bodyParser.json()); // support json encoded bodies
 //app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
@@ -68,22 +71,28 @@ app.use('/files/:videoFile', function (req, res) {
     let partialend = parts[1];
 
     let start = parseInt(partialstart, 10);
-    let end = partialend ? parseInt(partialend, 10) : total-1;
-    let chunksize = (end-start)+1;
+    let end = partialend ? parseInt(partialend, 10) : total - 1;
+    let chunksize = (end - start) + 1;
     //console.log('RANGE: ' + start + ' - ' + end + ' = ' + chunksize);
 
     let file = fs.createReadStream(videoPath, {start: start, end: end});
-    res.writeHead(206, { 'Content-Range': 'bytes ' + start + '-' + end + '/' + total, 'Accept-Ranges': 'bytes', 'Content-Length': chunksize, 'Content-Type': 'video/mp4' });
+    res.writeHead(206, {
+      'Content-Range': 'bytes ' + start + '-' + end + '/' + total,
+      'Accept-Ranges': 'bytes',
+      'Content-Length': chunksize,
+      'Content-Type': 'video/mp4'
+    });
     file.pipe(res);
   } else {
     //console.log('ALL: ' + total);
-    res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
+    res.writeHead(200, {'Content-Length': total, 'Content-Type': 'video/mp4'});
     fs.createReadStream(videoPath).pipe(res);
   }
 });
 
 /* Routes ~~~~~~ */
 app.use('/', routes); // Static Routes
+app.use('/', seo); // Search Engine Optimization Routes
 //app.use('/videos', videos); // Example on how I can further segregate the routes.
 
 /* Errors ~~~~~~ */
@@ -111,7 +120,7 @@ app.use(function (error, req, res, next) {
   res.status(500).render('error', errorJSON);
 });
 
-let port = process.env.PORT || 3002;
+let port = process.env.PORT || 3000;
 let server = app.listen(port, function () {
   console.log('Server running at http://127.0.0.1:' + port + '/');
 });

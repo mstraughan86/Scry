@@ -12,4 +12,27 @@ app.get('/video/:videoId', (req, res, next) => {
   });
 });
 
+/*
+TO MAKE:
+
+ about
+ faq
+ terms & conditions
+ contact us
+ disclaimer
+ help
+ privacy policy
+ shows/videos
+ shop
+ home
+ web policy
+ browser support
+ site map
+ accessibility
+ (email us)
+ customer service
+ what's new (edited)
+
+ */
+
 module.exports = app;
