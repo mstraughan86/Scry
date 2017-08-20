@@ -6,7 +6,12 @@ let fs = require('fs');
 let express = require('express');
 let app = express();
 let dust = require('express-dustjs');
+
 let sass = require('node-sass-middleware');
+let bourbon = require('./lib').bourbon;
+let neat = require('./lib').neat;
+let bitters = require('./lib').bitters;
+
 let favicon = require('serve-favicon');
 let routes = require('./routes/routes');
 let seo = require('./routes/seo');
@@ -17,6 +22,25 @@ let serveStatic = require('serve-static');
 //dotenv.config(); // Attaching things to process.env
 //can set things like NODE_ENV for production, development, etc.
 
+/*
+
+ @import "bourbon";
+
+ @import "neat";
+ @import "neat-helpers";
+
+ @import "base";
+ @import "buttons";
+ @import "forms";
+ @import "layout";
+ @import "lists";
+ @import "media";
+ @import "tables";
+ @import "typography";
+ @import "variables";
+
+ */
+
 /* DustJS Configuration ~~~~~~ */
 const dustInstance = dust._; // Instance object to attach properties to.
 dustInstance.config.whitespace = true; // .../dustjs/wiki/Dust-Tutorial#controlling-whitespace-suppression
@@ -26,6 +50,7 @@ dustInstance.helpers.test = function (chunk, context, bodies, params) {return ch
 const sassConfig = { // https://github.com/sass/node-sass#options
   src: path.join(__dirname, 'sass'),
   dest: path.join(__dirname, 'public', 'css'),
+  includePaths: [bourbon, neat, bitters],
   outputStyle: 'expanded',
   debug: false,
   prefix: '' // https://stackoverflow.com/questions/30654312/why-node-sass-middleware-is-not-working

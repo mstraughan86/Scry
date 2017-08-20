@@ -6,5 +6,19 @@
 <link href="/css/home.css" rel="stylesheet" type="text/css" />
 {/link}
 {<body}
-<h1>Homepage</h1>
+<h1>Homepage Chloe!</h1>
+<div class="hero">
+    <div class="hero-content">
+        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image" class="hero-logo">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni modi doloremque excepturi laudantium maxime explicabo cumque deleniti voluptate deserunt.</p>
+    </div>
+</div>
+<div>
+    <ul>
+        <li>
+            <p>season 2</p>
+        </li>
+    </ul>
+</div>
+
 {/body}
