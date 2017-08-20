@@ -10,6 +10,11 @@
     <!-- Google Tag Manager -->
     <!-- End Google Tag Manager -->
 
+
+    <link rel="stylesheet" href="/path/to/flickity.css" media="screen">
+
+
+
     <script src="/js/global.js"></script>
     {+script /}
     <link href="/css/global.css" rel="stylesheet" type="text/css"/>

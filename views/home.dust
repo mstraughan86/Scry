@@ -1,9 +1,11 @@
 {>page /}
 {<script}
 <!-- <link href="/css/home.js" rel="stylesheet" type="text/css" /> -->
+<script src="/js/flickity.pkgd.js"></script>
 {/script}
 {<link}
 <link href="/css/home.css" rel="stylesheet" type="text/css" />
+<link href="/css/flickity.css" rel="stylesheet" />
 {/link}
 {<body}
 <h1>Homepage Chloe!</h1>
@@ -14,11 +16,92 @@
     </div>
 </div>
 <div>
-    <ul>
-        <li>
-            <p>season 2</p>
-        </li>
-    </ul>
+    <td>
+        <tr>
+            <h1>Season 1</h1>
+            <div class="carousel"
+                 data-flickity='{ "groupCells": "20%",
+                    "initialIndex": "0",
+                    "cellAlign": "left",
+                    "wrapAround": "true",
+                    "groupCells": "true"}'>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+            </div>
+        </tr>
+        <tr>
+            <h1>Season 2</h1>
+            <div class="carousel"
+                 data-flickity='{ "groupCells": "20%",
+                    "initialIndex": "0",
+                    "cellAlign": "left",
+                    "wrapAround": "true",
+                    "groupCells": "true"}'>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+            </div>
+        </tr>
+        <tr>
+            <h1>Season 3</h1>
+            <div class="carousel"
+                 data-flickity='{ "groupCells": "20%",
+                    "initialIndex": "0",
+                    "cellAlign": "left",
+                    "wrapAround": "true",
+                    "groupCells": "true"}'>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+            </div>
+        </tr>
+        <tr>
+            <h1>Season 4</h1>
+            <div class="carousel"
+                 data-flickity='{ "groupCells": "20%",
+                    "initialIndex": "0",
+                    "cellAlign": "left",
+                    "wrapAround": "true",
+                    "groupCells": "true"}'>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+                <div class="carousel-cell"></div>
+            </div>
+        </tr>
+    </td>
 </div>
 
 {/body}
