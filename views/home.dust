@@ -5,7 +5,8 @@
 {/script}
 {<link}
 <link href="/css/home.css" rel="stylesheet" type="text/css" />
-<link href="/css/flickity.css" rel="stylesheet" />
+<link href="/css/flickity.css" rel="stylesheet"  media="screen" />
+
 {/link}
 {<body}
 <h1>Homepage Chloe!</h1>
@@ -19,12 +20,7 @@
     <td>
         <tr>
             <h1>Season 1</h1>
-            <div class="carousel"
-                 data-flickity='{ "groupCells": "20%",
-                    "initialIndex": "0",
-                    "cellAlign": "left",
-                    "wrapAround": "true",
-                    "groupCells": "true"}'>
+            <div class="carousel" data-flickity='{ "groupCells": "20%","initialIndex": "0","cellAlign": "left","wrapAround": "true","groupCells": "true"}'>
                 <div class="carousel-cell"></div>
                 <div class="carousel-cell"></div>
                 <div class="carousel-cell"></div>

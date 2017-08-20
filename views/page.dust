@@ -3,7 +3,7 @@
 <head>
     <title>{title}</title>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {>schema-org /}
 
@@ -11,13 +11,11 @@
     <!-- End Google Tag Manager -->
 
 
-    <link rel="stylesheet" href="/path/to/flickity.css" media="screen">
-
 
 
     <script src="/js/global.js"></script>
     {+script /}
-    <link href="/css/global.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/global.css" rel="stylesheet" type="text/css" />
     {+link /}
 
 </head>
