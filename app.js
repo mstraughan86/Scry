@@ -145,7 +145,7 @@ app.use(function (error, req, res, next) {
   res.status(500).render('error', errorJSON);
 });
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3002;
 let server = app.listen(port, function () {
   console.log('Server running at http://127.0.0.1:' + port + '/');
 });

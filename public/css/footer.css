@@ -1,4 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 html {
   box-sizing: border-box;
 }
@@ -264,18 +263,104 @@ hr {
   margin: 1.5em 0;
 }
 
-body {
-  margin: 0;
-  background: url("/assets/graphy.png");
-  font-family: 'Helvetica Neue', sans-serif;
+.footer-2 {
+  background: #1c3653;
+  display: inline-block;
+  padding: 1.5em;
+  width: 100%;
 }
 
-body h1 {
-  margin: 0 auto;
-  z-index: 0;
-  text-align: center;
-  font-size: 8em;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  color: #0080FF;
+.footer-2 .footer-logo {
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+
+@media screen and (min-width: 53.75em) {
+  .footer-2 .footer-logo {
+    float: left;
+    margin-bottom: 0;
+  }
+}
+
+.footer-2 .footer-logo img {
+  height: 1.6em;
+}
+
+.footer-2 ul {
+  line-height: 1.5em;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 53.75em) {
+  .footer-2 ul {
+    float: left;
+    line-height: 1.8em;
+    margin-bottom: 0;
+    margin-left: 1em;
+  }
+}
+
+.footer-2 ul li {
+  list-style: none;
+  padding-right: 1em;
+}
+
+@media screen and (min-width: 53.75em) {
+  .footer-2 ul li {
+    display: inline;
+    text-align: left;
+  }
+}
+
+.footer-2 ul li a {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+}
+
+.footer-2 ul li a:focus, .footer-2 ul li a:hover {
+  color: white;
+}
+
+@media screen and (min-width: 53.75em) {
+  .footer-2 .footer-secondary-links {
+    float: right;
+  }
+}
+
+.footer-2 .footer-secondary-links li {
+  font-size: 0.8em;
+}
+
+.footer-2 .footer-secondary-links ul.footer-social {
+  margin: 1em 0 0 0;
+}
+
+@media screen and (min-width: 53.75em) {
+  .footer-2 .footer-secondary-links ul.footer-social {
+    float: right;
+    margin-top: 0;
+  }
+}
+
+.footer-2 .footer-secondary-links ul.footer-social li {
+  float: left;
+  font-size: 1em;
+  line-height: 0;
+  margin: 0;
+  padding-right: 0.7em;
+}
+
+.footer-2 .footer-secondary-links ul.footer-social li:last-child {
+  padding-right: 0;
+}
+
+.footer-2 .footer-secondary-links ul.footer-social img {
+  height: 1.6em;
   opacity: 0.7;
+  padding: 1px;
+}
+
+.footer-2 .footer-secondary-links ul.footer-social img:focus, .footer-2 .footer-secondary-links ul.footer-social img:hover {
+  opacity: 1;
 }
