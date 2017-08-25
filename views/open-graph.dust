@@ -1,0 +1,11 @@
+{#openGraph}
+<meta property="og:title" content={title} />
+<meta property="og:url" content={canonical} />
+<meta property="og:description" content={description|s} />
+
+<meta property="og:type" content={openGraphType} />
+<meta property="og:image" content={openGraphImage} />
+<meta property="og:image:alt" content={openGraphImageAlt} />
+<meta property="fb:app_id" content={facebookAppId} />
+{:else}
+{/openGraph}

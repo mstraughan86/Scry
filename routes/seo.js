@@ -4,11 +4,19 @@ let CronJob = require('cron').CronJob;
 let sm = require('sitemap');
 let robots = require('express-robots');
 
+let dataDictionary = require('../utilities/dataDictionary.js');
+
 const changeFrequency = {
   'default': 'always',
+
   'static': 'monthly',
   'home': 'daily',
-  'video': 'weekly'
+  'video': 'weekly',
+
+  'always': 'always',
+  'monthly': 'monthly',
+  'daily': 'daily',
+  'weekly': 'weekly'
 };
 const priority = {
   'default': 0.6,
@@ -18,11 +26,6 @@ const priority = {
   'home': 0.7,
   'video': 0.8
 };
-const videoHashMap = [
-  {'bunny': 0},
-  {'butterfly': 1}
-  //{'episode-title-here': 'episode numeral here'}
-];
 const staticPages = [
   {
     'url': '/',
@@ -56,10 +59,11 @@ const generateStaticUrlArray = () => {
       });
     }
   });
-  videoHashMap.forEach((video) => {
-    let videoName = Object.keys(video);
+  Object.keys(dataDictionary.videos).forEach((video) => {
+    let videoName = dataDictionary.format(video);
+
     urlArray.push({
-      "url": videoName,
+      "url": '/video/' + videoName,
       "changefreq": changeFrequency['video'],
       "priority": priority['video'],
       "lastmodrealtime": true

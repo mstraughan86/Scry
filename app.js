@@ -56,7 +56,7 @@ const sassConfig = { // https://github.com/sass/node-sass#options
   prefix: '' // https://stackoverflow.com/questions/30654312/why-node-sass-middleware-is-not-working
 };
 
-/* ExpressJS Configuration ~~~~~~ */
+/* ExpressJS Configuration ~~~~ ~~ */
 app.engine('dust', dust.engine({useHelpers: true}));
 app.set('view engine', 'dust');
 app.set('views', path.resolve(__dirname, './views'));

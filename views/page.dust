@@ -2,9 +2,12 @@
 <html>
 <head>
     <title>{title}</title>
-    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
     {>schema-org /}
+    {>open-graph /}
 
     <!-- Google Tag Manager -->
     <!-- End Google Tag Manager -->
@@ -13,10 +16,13 @@
     <script src="/js/header.js"></script>
     <script src="/js/footer.js"></script>
     {+script /}
+
     <link href="/css/global.css" rel="stylesheet" type="text/css" />
     <link href="/css/header.css" rel="stylesheet" type="text/css" />
     <link href="/css/footer.css" rel="stylesheet" type="text/css" />
     {+link /}
+
+    <link rel="canonical" href={canonical} />
 
 </head>
 <body>
