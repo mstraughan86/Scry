@@ -1,75 +1,60 @@
 module.exports = {
-  'openGraph-type': 'openGraphType',
-  'openGraph-image': 'openGraphImage',
-  'openGraph-imageAltText': 'openGraphImageAlt',
-  'facebookAppId': 'ccc',
-  'openGraph-imageUrl': 'imageUrl',
-  'openGraph-imageSecureUrl': 'imageSecureUrl',
-  'openGraph-imageType': 'imageType',
-  'openGraph-imageWidth': 'imageWidth',
-  'openGraph-imageHeight': 'imageHeight',
-  'openGraph-imageAltText': 'imageAltText'
+	'facebookAppId': 'ccc',
+	'images': [
+		{
+		  'openGraph-image': 'https://github.com/edent/SuperTinySocialIcons/blob/master/original/github.png',
+		  'openGraph-imageSecureUrl': 'https://github.com/edent/SuperTinySocialIcons/blob/master/original/github.png',
+		  'openGraph-imageType': 'image/png',
+		  'openGraph-imageWidth': '200',
+		  'openGraph-imageHeight': '200',
+		  'openGraph-imageAltText': 'imageAltText'
+		},
+		{
+		  'openGraph-image': 'https://raw.githubusercontent.com/edent/SuperTinySocialIcons/master/original/flickr.png',
+		  'openGraph-imageSecureUrl': 'https://raw.githubusercontent.com/edent/SuperTinySocialIcons/master/original/flickr.png',
+		  'openGraph-imageType': 'image/png',
+		  'openGraph-imageWidth': '200',
+		  'openGraph-imageHeight': '200',
+		  'openGraph-imageAltText': 'imageAltText'
+		},
+		{
+		  'openGraph-image': 'https://raw.githubusercontent.com/edent/SuperTinySocialIcons/master/original/twitter.png',
+		  'openGraph-imageSecureUrl': 'https://raw.githubusercontent.com/edent/SuperTinySocialIcons/master/original/twitter.png',
+		  'openGraph-imageType': 'image/png',
+		  'openGraph-imageWidth': '200',
+		  'openGraph-imageHeight': '200',
+		  'openGraph-imageAltText': 'imageAltText'
+		}
+	],
+	"testEnabled": "bunnies",
+  'openGraph-type': "video.episode",
+  'openGraph-videoDuration': 'asdf',
+  'openGraph-videoReleaseDate': 'asdf',
+  'openGraph-videoTags': 'asdf',
+  'openGraph-videoSeries': 'asdf',
+  'actors': [
+  	{
+  		'link': 'https://www.imdb.com/1234',
+  		'role': 'Norm Hull'
+  	},
+  	{
+  		'link': 'https://www.imdb.com/5678',
+  		'role': 'Todd Margarette'
+  	}
+  ],
+  'directors': [
+  	{
+  		'link': 'https://www.imdb.com/1234'
+  	}
+  ],
+  'writers': [
+  	{
+  		'link': 'https://www.imdb.com/1234'
+  	}
+  ]
 };
 
 
 /*
-
-if its the homepage, do this
-
-if its the video page, do this instead.
-
-need to find details for each video.
-
-{#openGraph}
-{title}
-{canonical}
-{description}
-{facebookAppId}
-
-{#images}
-  {openGraph-imageUrl}
-  {openGraph-imageSecureUrl}
-  {openGraph-imageType}
-  {openGraph-imageWidth}
-  {openGraph-imageHeight}
-  {openGraph-imageAltText}
-{:else}
-{/images}
-
-{@select key="openGraph-type"}
-  {@eq value="video.episode"}
-
-    {openGraph-type}
-    {openGraph-videoDuration}
-    {openGraph-videoReleaseDate}
-    {openGraph-videoTags}
-    {openGraph-videoSeries}
-  
-    {#actors}
-      {link}
-      {role}
-    {:else}
-    {/actors}
-
-    {#directors}
-      {link}
-    {:else}
-    {/directors}
-
-    {#writers}
-      {link}
-    {:else}
-    {/writers}
-
-  {/eq}
-{/select}
-
-{:else}
-{/openGraph}
-
-
-
-
-
 
 */
