@@ -1,12 +1,13 @@
 let app = require('express')();
-let openGraph = require('../utilities/openGraph.js');
+let openGraph = require('../utilities/openGraph.js').generate;
+
 
 app.get('/', (req, res) => {
   res.render('home', {
     title: 'Scry - Show me what you got.',
     description: 'My little scrying object, what would you show me?, I said, with rising anticipation.',
     canonical: 'https://www.scry.io',
-    openGraph,
+    openGraph: openGraph('home'),
 
     season: [
       {episode: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]},

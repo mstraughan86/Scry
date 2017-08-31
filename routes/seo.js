@@ -59,9 +59,8 @@ const generateStaticUrlArray = () => {
       });
     }
   });
-  Object.keys(dataDictionary.videos).forEach((video) => {
-    let videoName = dataDictionary.format(video);
-
+  dataDictionary.getVideosList().forEach((video) => {
+    let videoName = dataDictionary.formatTitleToUrl(video);
     urlArray.push({
       "url": '/video/' + videoName,
       "changefreq": changeFrequency['video'],
