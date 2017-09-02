@@ -60,7 +60,7 @@ const generateStaticUrlArray = () => {
     }
   });
   dataDictionary.getVideosList().forEach((video) => {
-    let videoName = dataDictionary.formatTitleToUrl(video);
+    let videoName = dataDictionary.formatTitleForUrl(video);
     urlArray.push({
       "url": '/video/' + videoName,
       "changefreq": changeFrequency['video'],

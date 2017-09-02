@@ -75,39 +75,29 @@ const database = [
   }
 ];
 
-//does this video number exist
-//get video name by number
-const doesThisVideoExist = (title) => {
+const doesThisVideoExist = title => {
   if (typeof title == 'string') return Object.keys(videoMap).includes(title);
   if (typeof title == 'number') return Object.values(videoMap).includes(title);
   return false;
 };
+const formatTitleForUrl = str => str.replace(/\W+/g, '-').toLowerCase();
+const getSeries = () => videoSeries;
+const getVideosList = () => Object.keys(videoMap);
 
-const getSeries = () => {
-  return videoSeries;
-};
-
-const getVideoData = (title) => {
+const getVideoData = title => {
   const titleCheck = doesThisVideoExist(title);
   if (typeof title == 'string' && titleCheck) return database[videoMap[title]];
   if (typeof title == 'number' && titleCheck) return database[title];
   return null;
 };
 
-const getVideosList = () => {
-  return Object.keys(videoMap); // this just simply needs to be an array all titles
-};
+// get rid of absolute path urls in the data object, and store the actual 
+// website somewhere and abstract its use.
 
-const formatTitleToUrl = (title) => {
-  // Replace spaces with dashes
-  // Replace symbols with dashes
-  // Change title to all lower case
-  return title.replace(/\W+/g, '-').toLowerCase();
-};
-
+// rename getSeries to getSeriesTitle
 module.exports = {
   getSeries,
   getVideoData,
   getVideosList,
-  formatTitleToUrl
+  formatTitleForUrl
 };
