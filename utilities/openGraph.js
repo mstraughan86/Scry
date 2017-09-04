@@ -77,10 +77,6 @@ const generate = (pageType, pageObject = 'default') => {
   if (pageType == 'video') {
     const videoObject = dataDictionary.getVideoData(pageObject);
     videoObject.series = dataDictionary.getSeries();
-
-    console.log('Printing og object');
-    console.log(videoObject);
-    
     return {
       title: videoObject.title,
       description: videoObject.description,

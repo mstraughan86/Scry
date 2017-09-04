@@ -82,10 +82,11 @@ app.use('/css', sass(sassConfig));
 /* Public Resources ~~~~~~ */
 app.use('/', favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico'))); // Set favicon
 app.use('/', express.static(path.join(__dirname, 'public'))); // Public files: CSS, JS, Images
+app.use('/', express.static(path.join(__dirname, 'files'))); // Public files: CSS, JS, Images
 
 /* Video Files ~~~~~~ */
 app.use('/files/:videoFile', function (req, res) {
-  let videoPath = path.join(__dirname, 'files', 'videos', 'mov_bbb.mp4');
+  let videoPath = path.join(__dirname, 'files', 'videos', 'bunny.mp4');
   let stat = fs.statSync(videoPath);
   let total = stat.size;
 

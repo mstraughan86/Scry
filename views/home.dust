@@ -21,7 +21,6 @@
             <div>
                 <header class="navigation" role="banner">
                     <div class="navigation-wrapper">
-
                         <div class="first-half">
                             <a href="javascript:void(0)" class="logo">
                                 <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image">
@@ -56,21 +55,22 @@
                                 </ul>
                             </div>
                         </div>
-
                         <div class="second-half">
 
                         </div>
-
                     </div>
                 </header>
                 <div class="carousel">
                     {#episode}
-                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell">
+                        <a href={url}>
+                            <img src={imageThumb} >
+                        </a>
+                    </div>
                     {:else}
                     {/episode}
                 </div>
             </div>
-            {:else}
             {/season}
         </tr>
     </td>
