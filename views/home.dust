@@ -1,78 +1,80 @@
 {>page /}
 {<script}
-<script src="/js/flickity.pkgd.js"></script>
-<script src="/js/home.js" type="application/javascript"></script>
+    <script src="/js/flickity.pkgd.js"></script>
+    <script src="/js/home.js" type="application/javascript"></script>
 {/script}
 {<link}
-<link href="/css/flickity.css" rel="stylesheet"  media="screen" />
-<link href="/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="/css/flickity.css" rel="stylesheet"  media="screen" />
+    <link href="/css/home.css" rel="stylesheet" type="text/css" />
 {/link}
 {<body}
-<div class="hero">
-    <div class="hero-content">
-        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image" class="hero-logo">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni modi doloremque excepturi laudantium maxime explicabo cumque deleniti voluptate deserunt.</p>
+    <div class="hero">
+        <div class="hero-content">
+            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image" class="hero-logo">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni modi doloremque excepturi laudantium maxime explicabo cumque deleniti voluptate deserunt.</p>
+        </div>
     </div>
-</div>
-<div class="episodes">
-    <td>
-        <tr>
-            {#season}
-            <div>
-                <header class="navigation" role="banner">
-                    <div class="navigation-wrapper">
-                        <div class="first-half">
-                            <a href="javascript:void(0)" class="logo">
-                                <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image">
-                            </a>
-                            <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
-                            <nav role="navigation">
-                                <ul id="js-navigation-menu" class="navigation-menu show">
-                                    <li class="nav-link"><a href="javascript:void(0)">Season 0</a></li>
-                                </ul>
-                            </nav>
-                            <div class="navigation-tools">
-                                <ul id="js-navigation-menu" class="navigation-menu show">
-                                    <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
-                                    <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">More</a>
-                                        <ul class="submenu">
-                                            <li><a href="javascript:void(0)">Submenu Item</a></li>
-                                            <li><a href="javascript:void(0)">Another Item</a></li>
-                                            <li class="more"><a href="javascript:void(0)">Item with submenu</a>
-                                                <ul class="submenu">
-                                                    <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
-                                                    <li><a href="javascript:void(0)">Another Item</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="more"><a href="javascript:void(0)">Another submenu</a>
-                                                <ul class="submenu">
-                                                    <li><a href="javascript:void(0)">Sub-submenu</a></li>
-                                                    <li><a href="javascript:void(0)">An Item</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+    <div class="episodes">
+        <td>
+            <tr>
+                {#season}
+                <div>
+                    <header class="navigation" role="banner">
+                        <div class="navigation-wrapper">
+                            <div class="first-half">
+                                <a href="javascript:void(0)" class="logo">
+                                    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image">
+                                </a>
+                                <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+                                <nav role="navigation">
+                                    <ul id="js-navigation-menu" class="navigation-menu show">
+                                        <li class="nav-link"><a href="javascript:void(0)">Season 0</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="navigation-tools">
+                                    <ul id="js-navigation-menu" class="navigation-menu show">
+                                        <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
+                                        <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">More</a>
+                                            <ul class="submenu">
+                                                <li><a href="javascript:void(0)">Submenu Item</a></li>
+                                                <li><a href="javascript:void(0)">Another Item</a></li>
+                                                <li class="more"><a href="javascript:void(0)">Item with submenu</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
+                                                        <li><a href="javascript:void(0)">Another Item</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="more"><a href="javascript:void(0)">Another submenu</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="javascript:void(0)">Sub-submenu</a></li>
+                                                        <li><a href="javascript:void(0)">An Item</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="second-half">
+
                             </div>
                         </div>
-                        <div class="second-half">
-
+                    </header>
+                    <div class="carousel">
+                        {#episode}
+                        <div class="carousel-cell">
+                            <a href={url}>
+                                <img src={imageThumb} >
+                            </a>
                         </div>
+                        {:else}
+                        {/episode}
                     </div>
-                </header>
-                <div class="carousel">
-                    {#episode}
-                    <div class="carousel-cell">
-                        <a href={url}>
-                            <img src={imageThumb} >
-                        </a>
-                    </div>
-                    {:else}
-                    {/episode}
                 </div>
-            </div>
-            {/season}
-        </tr>
-    </td>
-</div>
+                {/season}
+            </tr>
+        </td>
+    </div>
 {/body}
+{<postscript}
+{/postscript}

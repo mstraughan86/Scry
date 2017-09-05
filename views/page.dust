@@ -31,5 +31,6 @@
 {>header /}
 {+body /}
 {>footer /}
+{+postscript /}
 </body>
 </html>

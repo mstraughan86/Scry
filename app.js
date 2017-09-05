@@ -63,12 +63,6 @@ app.set('view engine', 'dust');
 app.set('views', path.resolve(__dirname, './views'));
 app.use('/css', sass(sassConfig));
 
-/* CSS/JS NPM Imports */
-app.use('/js', express.static(path.join(__dirname, 'node_modules', 'flickity', 'dist')));
-app.use('/css', express.static(path.join(__dirname, 'node_modules', 'flickity', 'dist')));
-
-app.use('/js', express.static(path.join(__dirname, 'node_modules', 'video.js', 'dist')));
-app.use('/css', express.static(path.join(__dirname, 'node_modules', 'video.js', 'dist')));
 // Use body-parser to parse the body of post requests from json
 //app.use(bodyParser.json()); // support json encoded bodies
 //app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
@@ -85,6 +79,14 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules', 'video.js', 
 //
 //http://expressjs.com/en/api.html
 //app.use([path,] callback [, callback...])
+
+/* CSS/JS NPM Imports */
+app.use('/css', express.static(path.join(__dirname, 'node_modules', 'flickity', 'dist')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules', 'flickity', 'dist')));
+
+app.use('/css', express.static(path.join(__dirname, 'node_modules', 'video.js', 'dist')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules', 'video.js', 'dist')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules', 'videojs-playlist', 'dist')));
 
 /* Public Resources ~~~~~~ */
 app.use('/', favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico'))); // Set favicon
