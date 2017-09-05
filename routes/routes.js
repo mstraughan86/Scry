@@ -22,7 +22,8 @@ app.get('/video/:videoId', (req, res, next) => {
 
   res.render('video', {
     title: 'Scry | Video Title Here',
-    videoFile: videoFile
+    videoFile: videoFile,
+    videoPreviewImg: '/files/images/001.jpg',
   });
 });
 

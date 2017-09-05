@@ -1,12 +1,18 @@
 {>page /}
 {<script}
-<!-- <link href="/css/video.js" rel="stylesheet" type="text/css" /> -->
+<script src="/js/video.js"></script>
 {/script}
 {<link}
-<link href="/css/video.css" rel="stylesheet" type="text/css" />
+<link href="/css/video-js.css" rel="stylesheet" type="text/css" />
+<link href="/css/video-js-custom.css" rel="stylesheet" type="text/css" />
 {/link}
 {<body}
 <h1>This is a video.</h1>
-<video width="400" controls>
-  <source src="{videoFile}" type="video/mp4">
+  <video id="example_video_1" class="video-js vjs-default-skin"
+         controls preload="auto"
+         poster="{videoPreviewImg}"
+         data-setup='{"example_option":true}'>
+    <source src="{videoFile}" type="video/mp4">
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
 {/body}

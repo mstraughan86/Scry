@@ -237,7 +237,7 @@ const getSeasonCarouselArray = (seasonNumber) => {
 };
 
 const getAliasUrlsList = () => database.map(o => {return {[o.url]: o.aliasUrl}});
-const getVideoFilePathFromId = id => database[id].video;
+const getVideoFilePathFromId = id => database[id].video || 0; // This is if someone manually types in /video/number and its crazy high.
 
 
 // get rid of absolute path urls in the data object, and store the actual

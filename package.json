@@ -25,6 +25,7 @@
     "express-basic-auth": "^1.1.1",
     "express-dustjs": "^1.1.1",
     "express-robots": "^0.1.6",
+    "flickity": "^2.0.9",
     "fs": "0.0.1-security",
     "javascript-obfuscator": "^0.9.4",
     "moment": "^2.18.1",
@@ -38,6 +39,7 @@
     "shelljs": "^0.7.8",
     "sitemap": "^1.13.0",
     "slack-node": "^0.1.8",
+    "video.js": "^6.2.7",
     "xml2js": "^0.4.17"
   }
 }
