@@ -8,5 +8,5 @@
 {<body}
 <h1>This is a video.</h1>
 <video width="400" controls>
-  <source src="/files/videos/mov_bbb.mp4" type="video/mp4">
+  <source src="{videoFile}" type="video/mp4">
 {/body}

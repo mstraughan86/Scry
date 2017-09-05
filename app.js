@@ -14,6 +14,7 @@ let bitters = require('./lib').bitters;
 
 let favicon = require('serve-favicon');
 let routes = require('./routes/routes');
+let alias = require('./routes/alias');
 let seo = require('./routes/seo');
 let serveStatic = require('serve-static');
 //let bodyParser = require('body-parser');
@@ -82,9 +83,9 @@ app.use('/css', sass(sassConfig));
 /* Public Resources ~~~~~~ */
 app.use('/', favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico'))); // Set favicon
 app.use('/', express.static(path.join(__dirname, 'public'))); // Public files: CSS, JS, Images
-app.use('/', express.static(path.join(__dirname, 'files'))); // Public files: CSS, JS, Images
+//app.use('/', express.static(path.join(__dirname, 'files'))); // Public files: CSS, JS, Images
 
-/* Video Files ~~~~~~ */
+/* Video Streaming ~~~~~~ */
 app.use('/files/:videoFile', function (req, res) {
   let videoPath = path.join(__dirname, 'files', 'videos', 'bunny.mp4');
   let stat = fs.statSync(videoPath);
@@ -115,6 +116,9 @@ app.use('/files/:videoFile', function (req, res) {
     fs.createReadStream(videoPath).pipe(res);
   }
 });
+
+/* Normalize Alias ~~~~~~ */
+app.use('/', alias);
 
 /* Routes ~~~~~~ */
 app.use('/', routes); // Static Routes

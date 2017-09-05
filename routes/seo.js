@@ -62,7 +62,7 @@ const generateStaticUrlArray = () => {
   dataDictionary.getVideosList().forEach((video) => {
     let videoName = dataDictionary.formatTitleForUrl(video);
     urlArray.push({
-      "url": '/video/' + videoName,
+      "url": '/episode/' + videoName,
       "changefreq": changeFrequency['video'],
       "priority": priority['video'],
       "lastmodrealtime": true
