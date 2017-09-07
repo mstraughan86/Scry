@@ -32,6 +32,7 @@ $center-big-play-button: true; // true default
      All dimensions use em-based sizes so that the scale along with the font size.
      Try increasing it to 15px and see what happens. */
   font-size: 20px;
+  position:static;
 
   /* The main font color changes the ICON COLORS as well as the text */
   color: $primary-foreground-color;

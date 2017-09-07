@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# video: http://ogp.me/ns/video#">
-    <title>{title}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+        <title>{title}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
 
-    {>schema-org /}
-    {>open-graph /}
+        {>schema-org /}
+        {>open-graph /}
 
-    <!-- Google Tag Manager -->
-    <!-- End Google Tag Manager -->
+        <!-- Google Tag Manager -->
+        <!-- End Google Tag Manager -->
 
-    <script src="/js/global.js"></script>
-    <script src="/js/header.js"></script>
-    <script src="/js/footer.js"></script>
-    {+script /}
+        <script src="/js/global.js"></script>
+        <script src="/js/header.js"></script>
+        <script src="/js/footer.js"></script>
+        {+script /}
 
-    <link href="/css/global.css" rel="stylesheet" type="text/css" />
-    <link href="/css/header.css" rel="stylesheet" type="text/css" />
-    <link href="/css/footer.css" rel="stylesheet" type="text/css" />
-    {+link /}
+        <link href="/css/global.css" rel="stylesheet" type="text/css" />
+        <link href="/css/header.css" rel="stylesheet" type="text/css" />
+        <link href="/css/footer.css" rel="stylesheet" type="text/css" />
+        {+link /}
 
-    <link rel="canonical" href={canonical} />
-
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<!-- End Google Tag Manager (noscript) -->
-{>header /}
-{+body /}
-{>footer /}
-{+postscript /}
-</body>
+        <link rel="canonical" href={canonical} />
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <!-- End Google Tag Manager (noscript) -->
+        {>header /}
+        {+body /}
+        {>footer /}
+        {+postscript /}
+    </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "name": "Scry",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "My little scrying object.",
   "scripts": {
     "start": "node app.js"

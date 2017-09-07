@@ -1,19 +1,34 @@
-{>page /}
-{<script}
-  <script src="/js/video.js"></script>
-  <script src="/js/videojs-playlist.js"></script>
-{/script}
-{<link}
-  <link href="/css/video-js.css" rel="stylesheet" type="text/css" />
-  <link href="/css/video-js-custom.css" rel="stylesheet" type="text/css" />
-{/link}
-{<body}
-  <video id="player" class="video-js vjs-default-skin">
-    <source src="{videoFile}" type="video/mp4">
-    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-  </video>
+<!DOCTYPE html>
+<html>
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# video: http://ogp.me/ns/video#">
+        <title>{title}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
 
-{/body}
-{<postscript}
-  <script src="/js/video-custom.js"></script>
-{/postscript}
+        {>schema-org /}
+        {>open-graph /}
+
+        <!-- Google Tag Manager -->
+        <!-- End Google Tag Manager -->
+
+        <script src="/js/global.js"></script>
+        <script src="/js/video.js"></script>
+        <script src="/js/videojs-playlist.js"></script>
+
+        <link href="/css/global.css" rel="stylesheet" type="text/css" />
+        <link href="/css/video-js.css" rel="stylesheet" type="text/css" />
+        <link href="/css/video-js-custom.css" rel="stylesheet" type="text/css" />
+
+        <link rel="canonical" href={canonical} />
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <!-- End Google Tag Manager (noscript) -->
+        <video id="player" class="video-js vjs-default-skin">
+            <source src="{videoFile}" type="video/mp4">
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+        <script src="/js/video-custom.js"></script>
+    </body>
+</html>
