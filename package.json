@@ -27,6 +27,8 @@
     "express-robots": "^0.1.6",
     "flickity": "^2.0.9",
     "fs": "0.0.1-security",
+    "google-auth-library": "^0.11.0",
+    "googleapis": "^21.3.0",
     "javascript-obfuscator": "^0.9.4",
     "moment": "^2.18.1",
     "node-sass-middleware": "^0.11.0",
