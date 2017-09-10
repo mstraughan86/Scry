@@ -18,6 +18,8 @@ var SCOPES =
     'https://www.googleapis.com/auth/tagmanager.publish',
   ];
 
+var SPREADSHEET_ID = '1OoSOjnw9gSsxhpiH9XZz9YLWuqCjrBo1XY-rnmaV6pg'; //1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms
+var RANGE = 'Sheet1!A2:O';
 
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'token.googleapis.com-nodejs-quickstart.json';
@@ -115,8 +117,8 @@ function listMajors(auth) {
   var sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
     auth: auth,
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E',
+    spreadsheetId: SPREADSHEET_ID,
+    range: RANGE,
   }, function (err, response) {
     if (err) {
       console.log('The API returned an error: ' + err);
@@ -126,11 +128,11 @@ function listMajors(auth) {
     if (rows.length == 0) {
       console.log('No data found.');
     } else {
-      console.log('Name, Major:');
+      console.log('Tag Name, CSS Selector, GTM ID:');
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
         // Print columns A and E, which correspond to indices 0 and 4.
-        console.log('%s, %s', row[0], row[4]);
+        console.log('%s, %s, %s', row[4], row[8], row[10]);
       }
     }
   });
