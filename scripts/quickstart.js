@@ -81,12 +81,8 @@ const getNewToken = (oauth2Client, resolve, reject) => {
 };
 
 const storeTokenToDisk = (token) => {
-  try {
-    fs.mkdirSync(TOKEN_DIR);
-  }
-  catch (err) {
-    if (err.code != 'EEXIST') throw err;
-  }
+  try { s.mkdirSync(TOKEN_DIR); }
+  catch (err) { if (err.code != 'EEXIST') throw err; }
   fs.writeFile(TOKEN_PATH, JSON.stringify(token));
   console.log('Token stored to ' + TOKEN_PATH);
 };
@@ -140,10 +136,8 @@ const gtmListBuiltInVariables = (asdf) => {
         console.log('The API returned an error: ' + err);
         return;
       }
-
       console.log(JSON.stringify(response, null, 2));
       console.log(asdf);
-
     }
   );
 };
