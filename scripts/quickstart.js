@@ -74,70 +74,118 @@ const getNewToken = (oauth2Client, resolve, reject) => {
         return;
       }
       oauth2Client.credentials = token;
-      storeToken(token);
+      storeTokenToDisk(token);
       resolve(oauth2Client);
     });
   });
 };
 
-/**
- * Store token to disk be used in later program executions.
- *
- * @param {Object} token The token to store to disk.
- */
-const storeToken = (token) => {
+const storeTokenToDisk = (token) => {
   try {
     fs.mkdirSync(TOKEN_DIR);
-  } catch (err) {
-    if (err.code != 'EEXIST') {
-      throw err;
-    }
+  }
+  catch (err) {
+    if (err.code != 'EEXIST') throw err;
   }
   fs.writeFile(TOKEN_PATH, JSON.stringify(token));
   console.log('Token stored to ' + TOKEN_PATH);
 };
 
+const globalizeAuthentication = (auth) => Promise.resolve(google.options({auth: auth}));
+
 /**
  * Print the names and majors of students in a sample spreadsheet:
  * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
  */
-const listMajors = (auth) => {
-  const sheets = google.sheets('v4');
-  sheets.spreadsheets.values.get({
-    auth: auth,
-    spreadsheetId: SPREADSHEET_ID,
-    range: RANGE,
-  }, function (err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    const rows = response.values;
-    if (rows.length == 0) {
-      console.log('No data found.');
-    } else {
-      console.log('Tag Name, CSS Selector, GTM ID:');
-      for (let i = 0; i < rows.length; i++) {
-        const row = rows[i];
-        // Print columns A and E, which correspond to indices 0 and 4.
-        console.log('%s, %s, %s', row[4], row[8], row[10]);
+const listMajors = () => {
+  return new Promise(function (resolve, reject) {
+    const sheets = google.sheets('v4');
+    const options = {
+      spreadsheetId: SPREADSHEET_ID,
+      range: RANGE,
+    };
+
+    sheets.spreadsheets.values.get(options, function (err, response) {
+      if (err) {
+        console.log('The API returned an error: ' + err);
+        reject(err);
+        return;
       }
-    }
+      const rows = response.values;
+      if (rows.length == 0) {
+        console.log('No data found.');
+        reject('No data found.');
+        return;
+      }
+      else {
+        console.log('Tag Name, CSS Selector, GTM ID:');
+        for (let i = 0; i < rows.length; i++) {
+          const row = rows[i];
+          console.log('%s, %s, %s', row[4], row[8], row[10]);
+        }
+        resolve('aaaa');
+        return;
+      }
+    });
   });
+};
+
+const gtmListBuiltInVariables = (asdf) => {
+  const tagmanager = google.tagmanager('v2');
+  tagmanager.accounts.containers.workspaces.built_in_variables.list({
+      parent: 'accounts/97652445/containers/7209102/workspaces/90'
+    }, function(err, response) {
+
+      if (err) {
+        console.log('The API returned an error: ' + err);
+        return;
+      }
+
+      console.log(JSON.stringify(response, null, 2));
+      console.log(asdf);
+
+    }
+  );
 };
 
 const main = () => {
   // Load client secrets from a local file.
-  fs.readFile('client_secret.json', function processClientSecrets(err, content) {
-    if (err) {
-      console.log('Error loading client secret file: ' + err);
-      return;
-    }
-    // Authorize a client with the loaded credentials, then call the
-    // Google Sheets API.
-    authorize(JSON.parse(content))
-      .then(listMajors);
-  });
+  const content = fs.readFileSync('client_secret.json');
+
+  authorize(JSON.parse(content))
+    .then(globalizeAuthentication)
+    .then(listMajors)
+    .then(gtmListBuiltInVariables);
 };
 
 main();
+
+// I now have access to ... the spreadsheets and can access them to do stuff.
+
+/*
+
+
+ https://tagmanager.google.com/?authuser=1#/container/accounts/97652445/containers/7209102/workspaces/90/variables/2147481606
+
+
+ what do i want to do with these new powers? I want to create an Automatic
+ event uploader to GTM.
+
+ I first need to make a.... GTM setup-er.
+
+ What is the first thing to do when setting up a GTM account? let slook.
+
+ Enable some built-in variables.
+ /accounts/97652445/containers/7209102/workspaces/90
+ accounts/97652445/containers/7209102/workspaces/90
+
+ POST https://www.googleapis.com/tagmanager/v2/+parent/built_in_variables
+
+
+
+ Hook up Google Analytics.
+
+
+
+
+ */
