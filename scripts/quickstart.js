@@ -28,21 +28,22 @@ const RANGE = 'Sheet1!A2:O';
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
-const authorize = (credentials, callback) => {
-  const clientSecret = credentials.installed.client_secret;
-  const clientId = credentials.installed.client_id;
-  const redirectUrl = credentials.installed.redirect_uris[0];
-  const auth = new googleAuth();
-  const oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+const authorize = (credentials) => {
+  return new Promise(function (resolve, reject) {
+    const clientSecret = credentials.installed.client_secret;
+    const clientId = credentials.installed.client_id;
+    const redirectUrl = credentials.installed.redirect_uris[0];
+    const auth = new googleAuth();
+    const oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
 
-  // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, function (err, token) {
-    if (err) {
-      getNewToken(oauth2Client, callback);
-    } else {
-      oauth2Client.credentials = JSON.parse(token);
-      callback(oauth2Client);
-    }
+    // Check if we have previously stored a token.
+    fs.readFile(TOKEN_PATH, function (err, token) {
+      if (err) getNewToken(oauth2Client, resolve, reject);
+      else {
+        oauth2Client.credentials = JSON.parse(token);
+        resolve(oauth2Client);
+      }
+    });
   });
 };
 
@@ -54,7 +55,7 @@ const authorize = (credentials, callback) => {
  * @param {getEventsCallback} callback The callback to call with the authorized
  *     client.
  */
-const getNewToken = (oauth2Client, callback) => {
+const getNewToken = (oauth2Client, resolve, reject) => {
   const authUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: SCOPES
@@ -69,11 +70,12 @@ const getNewToken = (oauth2Client, callback) => {
     oauth2Client.getToken(code, function (err, token) {
       if (err) {
         console.log('Error while trying to retrieve access token', err);
+        reject(err);
         return;
       }
       oauth2Client.credentials = token;
       storeToken(token);
-      callback(oauth2Client);
+      resolve(oauth2Client);
     });
   });
 };
@@ -133,7 +135,8 @@ const main = () => {
     }
     // Authorize a client with the loaded credentials, then call the
     // Google Sheets API.
-    authorize(JSON.parse(content), listMajors);
+    authorize(JSON.parse(content))
+      .then(listMajors);
   });
 };
 
