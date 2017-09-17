@@ -17,61 +17,53 @@
     <div class="episodes">
         <td>
             <tr>
+
+
                 {#season}
                 <div>
-                    <header class="navigation" role="banner">
-                        <div class="navigation-wrapper">
-                            <div class="first-half">
-                                <a href="javascript:void(0)" class="logo">
-                                    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image">
-                                </a>
-                                <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
-                                <nav role="navigation">
-                                    <ul id="js-navigation-menu" class="navigation-menu show">
-                                        <li class="nav-link"><a href="javascript:void(0)">Season 0</a></li>
-                                    </ul>
-                                </nav>
-                                <div class="navigation-tools">
-                                    <ul id="js-navigation-menu" class="navigation-menu show">
-                                        <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
-                                        <li id="js-navigation-more" class="nav-link more"><a href="javascript:void(0)">More</a>
-                                            <ul class="submenu">
-                                                <li><a href="javascript:void(0)">Submenu Item</a></li>
-                                                <li><a href="javascript:void(0)">Another Item</a></li>
-                                                <li class="more"><a href="javascript:void(0)">Item with submenu</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
-                                                        <li><a href="javascript:void(0)">Another Item</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="more"><a href="javascript:void(0)">Another submenu</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="javascript:void(0)">Sub-submenu</a></li>
-                                                        <li><a href="javascript:void(0)">An Item</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                    <div class="parent">
+                        <div class="left"></div>
+                        <div class="right">
+                            <div class="parent">
+                                <div class="carousel carousel-nav center"
+                                     data-flickity='
+                                     { "asNavFor": ".carousel-season-{$idx}",
+                                      "groupCells": true,
+                                      "contain": true,
+                                      "pageDots": false,
+                                      "cellAlign": "center",
+                                      "wrapAround": true
+                                     }'
+                                >
+                                    {#episode}
+                                    <div class="carousel-cell"></div>
+                                    {/episode}
                                 </div>
                             </div>
-                            <div class="second-half">
-
-                            </div>
                         </div>
-                    </header>
-                    <div class="carousel">
+                    </div>
+                    <div class="carousel carousel-main carousel-season-{$idx} "
+                         data-flickity='
+                         { "autoPlay": false,
+                           "groupCells": true,
+                           "wrapAround": true
+                         }'
+                    >
                         {#episode}
-                        <div class="carousel-cell">
-                            <a href={url}>
-                                <img src={imageThumb} >
-                            </a>
+                        <!--<div class="carousel-cell">-->
+                            <!--<a href={url}>-->
+                                <!--<img src={imageThumb} >-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <div class="carousel-cell" style="background:url('{imageThumb}') no-repeat center; background-size:cover;")>
+                            <div class="episode-title"><span class=episode-title-margin>{title}</span></div>
                         </div>
-                        {:else}
                         {/episode}
                     </div>
                 </div>
                 {/season}
+
+
             </tr>
         </td>
     </div>

@@ -1,5 +1,6 @@
 window.onload = function () {
   [...document.querySelectorAll('.carousel')].forEach((thing) => {
+    console.log('doin stuff.');
     var flkty = new Flickity(thing, {
       imagesLoaded: true,
       groupCells: "20%",
