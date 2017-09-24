@@ -4,6 +4,18 @@ var player = videojs(document.querySelector('.video-js'), {
   preload: 'auto'
 });
 
+fetch("/video/playlist",
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify({a: 1})
+  })
+  .then(function(res){ console.log(res) })
+  .catch(function(res){ console.log(res) });
+
 player.playlist([{
   sources: [{
     src: '/files/videos/1.mp4',

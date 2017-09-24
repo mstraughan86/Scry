@@ -27,6 +27,13 @@ app.get('/video/:videoId', (req, res, next) => {
   });
 });
 
+app.post('/video/playlist', (req, res) => {
+  console.log(req);
+  //console.log(req.body);
+  res.send({1: 2});
+  return;
+});
+
 /*
  TO MAKE:
 
