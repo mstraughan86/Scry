@@ -17,7 +17,7 @@
   "homepage": "https://github.com/mstraughan86/Scry#readme",
   "dependencies": {
     "async": "^2.4.0",
-    "body-parser": "^1.17.1",
+    "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "cron": "^1.2.1",
     "dotenv": "^4.0.0",

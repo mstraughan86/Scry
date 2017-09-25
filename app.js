@@ -17,7 +17,7 @@ let routes = require('./routes/routes');
 let alias = require('./routes/alias');
 let seo = require('./routes/seo');
 let serveStatic = require('serve-static');
-//let bodyParser = require('body-parser');
+let bodyParser = require('body-parser');
 //let cookieParser = require('cookie-parser');
 
 //dotenv.config(); // Attaching things to process.env
@@ -63,9 +63,9 @@ app.set('view engine', 'dust');
 app.set('views', path.resolve(__dirname, './views'));
 app.use('/css', sass(sassConfig));
 
-// Use body-parser to parse the body of post requests from json
-//app.use(bodyParser.json()); // support json encoded bodies
-//app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
 //app.use(cookieParser('secret')); // Use cookie-parser for affiliate link tracking
 // For a short time during development, you will need to log in.
 // If working locally, this is safe to comment out.

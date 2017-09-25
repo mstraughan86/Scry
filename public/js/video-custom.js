@@ -4,6 +4,9 @@ var player = videojs(document.querySelector('.video-js'), {
   preload: 'auto'
 });
 
+// get path and send it in fetch post body
+// add url to video in the thing.
+
 fetch("/video/playlist",
   {
     headers: {

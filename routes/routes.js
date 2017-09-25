@@ -28,9 +28,9 @@ app.get('/video/:videoId', (req, res, next) => {
 });
 
 app.post('/video/playlist', (req, res) => {
-  console.log(req);
-  //console.log(req.body);
-  res.send({1: 2});
+  console.log(req.body);
+  console.log(req.url);
+  res.send({12341234123412341234: 1234123412342134213412341234});
   return;
 });
 
