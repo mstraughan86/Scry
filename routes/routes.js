@@ -18,21 +18,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/video/:videoId', (req, res, next) => {
-  const videoFile = dataDictionary.getVideoFilePathFromId(req.params.videoId);
-
+  const videoData = dataDictionary.getVideoData(parseInt(req.params.videoId));
   res.render('video', {
-    title: 'Scry | Video Title Here',
-    videoFile: videoFile,
-    videoPreviewImg: '/files/images/001.jpg',
+    title: `Scry | ${videoData.title}`,
+    videoFile: videoData.video,
+    videoPreviewImg: videoData.imageThumb,
   });
 });
 
-app.post('/video/playlist', (req, res) => {
-  console.log(req.body);
-  console.log(req.url);
-  res.send({12341234123412341234: 1234123412342134213412341234});
-  return;
-});
+app.post('/video/playlist', (req, res) => res.send({playlist: getFullSeriesLoopPlaylist(req.url)}));
 
 /*
  TO MAKE:

@@ -4,84 +4,18 @@ var player = videojs(document.querySelector('.video-js'), {
   preload: 'auto'
 });
 
-// get path and send it in fetch post body
-// add url to video in the thing.
-
 fetch("/video/playlist",
   {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    method: "POST",
-    body: JSON.stringify({a: 1})
+    method: "POST"
   })
-  .then(function(res){ console.log(res) })
-  .catch(function(res){ console.log(res) });
-
-player.playlist([{
-  sources: [{
-    src: '/files/videos/1.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/001.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/2.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/002.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/3.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/003.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/4.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/004.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/5.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/005.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/6.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/006.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/7.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/007.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/8.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/008.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/9.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/009.jpg'
-}, {
-  sources: [{
-    src: '/files/videos/10.mp4',
-    type: 'video/mp4'
-  }],
-  poster: '/files/images/010.jpg'
-}]);
-
-// Play through the playlist automatically.
-player.playlist.autoadvance(1);
-
-
+  .then(res => {
+    console.log('HERE WE GO!!!!!!!!!!!!!');
+    console.log(res);
+    player.playlist(res);
+    player.playlist.autoadvance(1); // supposed to be 1, hehe
+  })
+  .catch(res => console.log(res));

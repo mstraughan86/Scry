@@ -18,6 +18,17 @@ const thesaurus = [
 
 const database = [
   {
+    title: `title`,
+    url: '/video/0',
+    aliasUrl: '/episode/alias',
+    season: 0,
+    episode: 0,
+    description: `Description`,
+    video: '/files/videos/0.mp4',
+    trailer: '/files/videos/trailers/0.mp4',
+    imageThumb: '/files/images/0.jpg'
+  },
+  {
     title: 'Pilot',
     url: '/video/1',
     aliasUrl: '/episode/pilot',
@@ -26,7 +37,7 @@ const database = [
     description: `Hank Hill is a proud and true American. He loves his job as a propane salesman, and respects and loves his family. But one day, after his son Bobby receives a black eye from a baseball game and Hank is heard raising his voice at the Mega-lo Mart, some women come to suspect Hank abuses his son. Word of mouth gets around and soon Hank finds himself under investigation by a skinny, neurotic social worker.`,
     video: '/files/videos/1.mp4',
     trailer: '/files/videos/trailers/1.mp4', //hover over trailer?
-    imageThumb: '/files/images/001.jpg',
+    imageThumb: '/files/images/1.jpg',
     images: [
       {
         url: '/files/images/pilot.jpg',
@@ -76,7 +87,7 @@ const database = [
     description: `Peggy is chosen to be the Sex Education teacher at Bobby's school.`,
     video: '/files/videos/2.mp4',
     trailer: '/files/videos/trailers/2.mp4', //hover over trailer?
-    imageThumb: '/files/images/002.jpg'
+    imageThumb: '/files/images/2.jpg'
   },
   {
     title: 'The Order of the Straight Arrow',
@@ -87,7 +98,7 @@ const database = [
     description: `When Bobby becomes a member of the Straight Arrows, Hank, Dale, Bill, & Boomhauer volunteer to take them on a camping trip. While there Bobby accidentally kill a whooping crane.`,
     video: '/files/videos/3.mp4',
     trailer: '/files/videos/trailers/3.mp4', //hover over trailer?
-    imageThumb: '/files/images/003.jpg'
+    imageThumb: '/files/images/3.jpg'
   },
   {
     title: `Hank's Got the Willies`,
@@ -98,7 +109,7 @@ const database = [
     description: `Bobby accidentally hits Hank's hero, Willie Nelson, with a golf ball.`,
     video: '/files/videos/4.mp4',
     trailer: '/files/videos/trailers/4.mp4', //hover over trailer?
-    imageThumb: '/files/images/004.jpg'
+    imageThumb: '/files/images/4.jpg'
   },
   {
     title: `Luanne's Saga`,
@@ -109,7 +120,7 @@ const database = [
     description: `After Buckley dumps Luanne Hank takes it upon himself to find her a new boyfriend, but for his own personal gain.`,
     video: '/files/videos/5.mp4',
     trailer: '/files/videos/trailers/5.mp4', //hover over trailer?
-    imageThumb: '/files/images/005.jpg'
+    imageThumb: '/files/images/5.jpg'
   },
   {
     title: `Hank's Unmentionable Problem`,
@@ -120,7 +131,7 @@ const database = [
     description: `Hank is very embarrassed and introvert about his constipation. And it certainly doesn't help his condition with Peggy telling all her friends, making Hank go to a proctologist and treating him like a child over it.`,
     video: '/files/videos/6.mp4',
     trailer: '/files/videos/trailers/6.mp4', //hover over trailer?
-    imageThumb: '/files/images/006.jpg'
+    imageThumb: '/files/images/6.jpg'
   },
   {
     title: `Westie Side Story`,
@@ -131,7 +142,7 @@ const database = [
     description: `Hank and the rest of the gang on Rainey St. gets a culture shock when their new Laotian neighbors move in next door.`,
     video: '/files/videos/7.mp4',
     trailer: '/files/videos/trailers/7.mp4', //hover over trailer?
-    imageThumb: '/files/images/007.jpg'
+    imageThumb: '/files/images/7.jpg'
   },
   {
     title: `Shins of the Father`,
@@ -142,7 +153,7 @@ const database = [
     description: `Hank's rambunctious, bigoted, sexist, loud war-vet father, Cotton, visits the Hills for Bobby's birthday. Instantly Cotton teaches the boy bad habits about how to treat women. Hank refuses to admit his father is doing wrong, until Cotton takes Bobby to the sleazy Hotel Arlen to go hooker shopping!`,
     video: '/files/videos/8.mp4',
     trailer: '/files/videos/trailers/8.mp4', //hover over trailer?
-    imageThumb: '/files/images/008.jpg'
+    imageThumb: '/files/images/8.jpg'
   },
   {
     title: `Peggy the Boggle Champ`,
@@ -153,7 +164,7 @@ const database = [
     description: `Peggy and Hank head to Dallas so Peggy can compete in a boggle tournament, but Hank decides to forego the tournament in order to attend a lawnmower expo.`,
     video: '/files/videos/9.mp4',
     trailer: '/files/videos/trailers/9.mp4', //hover over trailer?
-    imageThumb: '/files/images/009.jpg'
+    imageThumb: '/files/images/9.jpg'
   },
   {
     title: `Keeping Up with Our Joneses`,
@@ -164,7 +175,7 @@ const database = [
     description: `When Bobby is caught trying a cigarette, Hank decides the proper discipline is making Bobby smoke an entire carton. The result sparks an old smoking habit of Hank's and Peggy's, as well as a new habit in Bobby.`,
     video: '/files/videos/10.mp4',
     trailer: '/files/videos/trailers/10.mp4', //hover over trailer?
-    imageThumb: '/files/images/010.jpg'
+    imageThumb: '/files/images/10.jpg'
   },
   {
     title: `King of the Ant Hill`,
@@ -175,7 +186,7 @@ const database = [
     description: `After Hank fires him as his exterminator, Dale infests Hanks lawn with ants in order to seek revenge.`,
     video: '/files/videos/11.mp4',
     trailer: '/files/videos/trailers/11.mp4', //hover over trailer?
-    imageThumb: '/files/images/011.jpg'
+    imageThumb: '/files/images/11.jpg'
   },
   {
     title: `Plastic White Female`,
@@ -186,7 +197,7 @@ const database = [
     description: `Joeseph is throwing a co-ed party and informs Bobby there is going to be kissing. Never haven kissed a girl, Bobby practices on a plastic head Luanne was given for beauty school.`,
     video: '/files/videos/12.mp4',
     trailer: '/files/videos/trailers/12.mp4', //hover over trailer?
-    imageThumb: '/files/images/012.jpg'
+    imageThumb: '/files/images/12.jpg'
   },
   // {
   //   index: 1,
@@ -217,16 +228,16 @@ const doesThisVideoExist = title => {
   return false;
 };
 const getVideoIndexByTitle = title => {
-  if (/[A-Z]|\s+/.test(title))return thesaurus.findIndex(o => Object.keys(o)[0] == title);
+  if (/[A-Z]|\s+/.test(title)) return thesaurus.findIndex(o => Object.keys(o)[0] == title);
   return thesaurus.findIndex(o => o[Object.keys(o)[0]] == title);
 };
 const formatTitleForUrl = title => title.replace(/\W+/g, '-').toLowerCase();
 const getSeries = () => videoSeries;
 const getVideosList = () => thesaurus.map(o => Object.keys(o)[0]);
-const getVideoData = title => {
-  const titleCheck = doesThisVideoExist(title);
-  if (typeof title == 'string' && titleCheck) return database[getVideoIndexByTitle(title)];
-  if (typeof title == 'number' && titleCheck) return database[title];
+const getVideoData = ref => {
+  const titleCheck = doesThisVideoExist(ref);
+  if (typeof ref == 'string' && titleCheck) return database[getVideoIndexByTitle(ref)];
+  if (typeof ref == 'number' && titleCheck) return database[ref];
   return null;
 };
 
@@ -239,6 +250,31 @@ const getSeasonCarouselArray = (seasonNumber) => {
 const getAliasUrlsList = () => database.map(o => {return {[o.url]: o.aliasUrl}});
 const getVideoFilePathFromId = id => database[id].video || 0; // This is if someone manually types in /video/number and its crazy high.
 
+const getFullSeriesLoopPlaylist = (url) => {
+  const range = (start, end) => Array.from({length: (end - start + 1)}, (v, k) => k + start); // This is useful!
+  const origin = database.findIndex(o => o.aliasUrl == url);
+  const size = database.length - 1;
+
+  const video = (reference) => {
+    return {
+      sources: [{
+        src: `/files/videos/${reference}.mp4`,
+        type: 'video/mp4'
+      }],
+        poster: `/files/images/${reference}.jpg`
+    }
+  };
+
+  let playlist = [];
+
+  if (origin > 0) {
+    range(origin, size).forEach(e => playlist.push(video(e)));
+    range(0, origin - 1).forEach(e => playlist.push(video(e)));
+  }
+  else range(origin, size).forEach(e => playlist.push(video(e)));
+
+  return playlist;
+};
 
 // get rid of absolute path urls in the data object, and store the actual
 // website somewhere and abstract its use.
@@ -251,5 +287,6 @@ module.exports = {
   getSeasonCarouselArray,
   getAliasUrlsList,
   formatTitleForUrl,
-  getVideoFilePathFromId
+  getVideoFilePathFromId,
+  getFullSeriesLoopPlaylist
 };

@@ -94,7 +94,8 @@ app.use('/', express.static(path.join(__dirname, 'public'))); // Public files: C
 
 /* Video Streaming ~~~~~~ */
 app.use('/files/:videoFile', function (req, res) {
-  let videoPath = path.join(__dirname, 'files', 'videos', 'bunny.mp4');
+  const videoFilePath = req.params.videoFile.substring(1).split('/');
+  let videoPath = path.join(__dirname, ...videoFilePath);
   let stat = fs.statSync(videoPath);
   let total = stat.size;
 
