@@ -4,6 +4,19 @@ var player = videojs(document.querySelector('.video-js'), {
   preload: 'auto'
 });
 
+const updateUrlToMatchVideo = () => {
+  var currentVideo = player.playlist.currentItem();
+  // get current video
+  // get url for video
+  // change current url
+};
+
+// This fetch is unnecessary because instead of having a fetching js
+// we can dynamically create a <script> tag with the correct information
+// already served on initial load.
+// But, its a good example of using the app.post. I don't have very many
+// of that. So.... lets keep it.
+
 fetch("/video/playlist",
   {
     headers: {
@@ -16,8 +29,11 @@ fetch("/video/playlist",
   .then(res => {
     if (res.ok) {
       res.json()
-      .then(json => player.playlist(json.playlist))
-      .then(() => player.playlist.autoadvance(1));
+      .then(json => 
+        player.playlist(json.playlist);
+        player.playlist.repeat(true);
+        player.on('playlistchange', updateUrlToMatchVideo);
+      );
     }
   })
   .catch(res => console.log(res));
