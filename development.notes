@@ -4,14 +4,14 @@ Things to complete for the website.
 SEO
 ---
 Sitemap.xml 		: Infrastructure in-place; config not finalized; 			80%
-Robots.txt 		: Infrastructure in-place; config not finalized; 			80%
-Meta Robots		: 0%
+Robots.txt 		    : Infrastructure in-place; config not finalized; 			80%
+Meta Robots		    : 0%
 
 Social Media Tags:
 ------------------
 Schema.org JSON-LD 	: Dust Partial Only.														20%
-OpenGraph		: Dust Partial, generator js
-	type: video	: Need to finish dataDictionary portion					90%
+OpenGraph		    : Dust Partial, generator js
+	type: video	    : Need to finish dataDictionary portion					90%
 Twitter ***
 Meta Tags ***
 
