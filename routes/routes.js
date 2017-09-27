@@ -26,7 +26,7 @@ app.get('/video/:videoId', (req, res, next) => {
   });
 });
 
-app.post('/video/playlist', (req, res) => res.send({playlist: getFullSeriesLoopPlaylist(req.url)}));
+app.post('/video/playlist', (req, res) => {res.send({playlist: dataDictionary.getFullSeriesLoopPlaylist(req.body.path)})});
 
 /*
  TO MAKE:

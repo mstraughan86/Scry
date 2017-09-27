@@ -10,12 +10,14 @@ fetch("/video/playlist",
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    method: "POST"
+    method: "POST",
+    body: JSON.stringify({path: window.location.pathname})
   })
   .then(res => {
-    console.log('HERE WE GO!!!!!!!!!!!!!');
-    console.log(res);
-    player.playlist(res);
-    player.playlist.autoadvance(1); // supposed to be 1, hehe
+    if (res.ok) {
+      res.json()
+      .then(json => player.playlist(json.playlist))
+      .then(() => player.playlist.autoadvance(1));
+    }
   })
   .catch(res => console.log(res));

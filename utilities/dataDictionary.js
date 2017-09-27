@@ -267,11 +267,11 @@ const getFullSeriesLoopPlaylist = (url) => {
 
   let playlist = [];
 
-  if (origin > 0) {
+  if (origin > 1) {
     range(origin, size).forEach(e => playlist.push(video(e)));
-    range(0, origin - 1).forEach(e => playlist.push(video(e)));
+    range(1, origin - 1).forEach(e => playlist.push(video(e)));
   }
-  else range(origin, size).forEach(e => playlist.push(video(e)));
+  else range(1, size).forEach(e => playlist.push(video(e)));
 
   return playlist;
 };
