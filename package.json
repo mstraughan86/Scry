@@ -31,6 +31,8 @@
     "googleapis": "^21.3.0",
     "javascript-obfuscator": "^0.9.4",
     "moment": "^2.18.1",
+    "mongod": "^2.0.0",
+    "mongoose": "^4.11.13",
     "node-sass-middleware": "^0.11.0",
     "node-uuid": ">= 1.4.1",
     "normalize.css": "^7.0.0",

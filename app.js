@@ -1,10 +1,12 @@
-//let dotenv = require('dotenv') // https://www.npmjs.com/package/dotenv
 let request = require('request');
 let path = require('path');
 let util = require('util');
 let fs = require('fs');
 let express = require('express');
 let app = express();
+
+const mongoose = require('./utilities/mongoose');
+
 let dust = require('express-dustjs');
 
 let sass = require('node-sass-middleware');
@@ -20,8 +22,10 @@ let serveStatic = require('serve-static');
 let bodyParser = require('body-parser');
 //let cookieParser = require('cookie-parser');
 
+//let dotenv = require('dotenv') // https://www.npmjs.com/package/dotenv
 //dotenv.config(); // Attaching things to process.env
 //can set things like NODE_ENV for production, development, etc.
+let port = process.env.PORT || 3002;
 
 /*
 
@@ -158,7 +162,11 @@ app.use(function (error, req, res, next) {
   res.status(500).render('error', errorJSON);
 });
 
-let port = process.env.PORT || 3002;
-let server = app.listen(port, function () {
-  console.log('Server running at http://127.0.0.1:' + port + '/');
-});
+/* MongoDB Initialization ~~~~~~ */
+mongoose.connect()
+  .then(() => {
+    let server = app.listen(port, function () {
+      console.log('Server running at http://127.0.0.1:' + port + '/');
+    });
+  })
+  .catch(err => {console.log(err)});

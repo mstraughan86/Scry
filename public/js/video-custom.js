@@ -29,11 +29,11 @@ fetch("/video/playlist",
   .then(res => {
     if (res.ok) {
       res.json()
-      .then(json => 
-        player.playlist(json.playlist);
-        player.playlist.repeat(true);
-        player.on('playlistchange', updateUrlToMatchVideo);
-      );
+      .then(json => {
+          player.playlist(json.playlist);
+          player.playlist.repeat(true);
+          player.on('playlistchange', updateUrlToMatchVideo);
+      });
     }
   })
   .catch(res => console.log(res));

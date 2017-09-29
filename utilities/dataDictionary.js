@@ -16,6 +16,24 @@ const thesaurus = [
   //{"Episode Title Here": "episode-title-here"}
 ];
 
+// {
+//   index: 1,
+//   title: 'Butterfly Video',
+//   url: '',
+//   season: '',
+//   episode: '',
+//   description: '',
+//   video: '',
+//   trailer: '', //hover over trailer?
+//   images: [], // what different kinds of images do i want? for display, for opengraph linking, etc etc.
+//   releaseDate: '',
+//   duration: '',
+//   actors: [],
+//   writers: [],
+//   directors: [],
+//   tags: []
+// }
+
 const database = [
   {
     title: `title`,
@@ -199,23 +217,7 @@ const database = [
     trailer: '/files/videos/trailers/12.mp4', //hover over trailer?
     imageThumb: '/files/images/12.jpg'
   },
-  // {
-  //   index: 1,
-  //   title: 'Butterfly Video',
-  //   url: '',
-  //   season: '',
-  //   episode: '',
-  //   description: '',
-  //   video: '',
-  //   trailer: '', //hover over trailer?
-  //   images: [], // what different kinds of images do i want? for display, for opengraph linking, etc etc.
-  //   releaseDate: '',
-  //   duration: '',
-  //   actors: [],
-  //   writers: [],
-  //   directors: [],
-  //   tags: []
-  // }
+
 ];
 
 const doesThisVideoExist = title => {
