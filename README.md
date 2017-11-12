@@ -18,7 +18,8 @@ This is to be an all JS impementation of a video streaming server to be run and 
 - On application build, supply series name and video source, and application will output a fully prepared database for the server to run on.
 - On application load, everything just works.
 
-## Preparation (Not necessary for the moment.)
+## Preparation
+(Not necessary for the moment.)
 1. Find the IMDB url of your television series. For example: http://www.imdb.com/title/tt0118375/
 2. Source the video files.
 
@@ -30,7 +31,7 @@ cd Scry
 npm install
 ```
 
-####Raspberry Pi 3
+#### Raspberry Pi 3
 
 Here is something to get going on a Raspberry Pi 3:
 ```
@@ -56,8 +57,9 @@ nvm install v6.9.5
 sudo reboot
 ```
 
-## Configuration (Not necessary for the moment.)
+## Configuration
 ```
+(Not necessary for the moment.)
 ```
 
 ## Execution
@@ -83,8 +85,8 @@ Navigate to: http://127.0.0.1:3002/
 	- [Neat v1.9.0](https://github.com/thoughtbot/neat/releases/tag/v1.9.0)
 	- [Bitters v1.7.0](https://github.com/thoughtbot/bitters/releases/tag/v1.7.0)
 	- [Refills v0.2.0](https://github.com/thoughtbot/refills/releases/tag/v0.2.0)
-- [Normalize.css](http://necolas.github.io/normalize.css/) [1](https://stackoverflow.com/questions/6887336/what-is-the-difference-between-normalize-css-and-reset-css)
-- [Flickity](https://flickity.metafizzy.co/) [1](https://flickity.metafizzy.co/#initialize-with-vanilla-javascript)
+- [Normalize.css](http://necolas.github.io/normalize.css/) - [1](https://stackoverflow.com/questions/6887336/what-is-the-difference-between-normalize-css-and-reset-css)
+- [Flickity](https://flickity.metafizzy.co/) - [1](https://flickity.metafizzy.co/#initialize-with-vanilla-javascript)
 - [Video.js](http://videojs.com/)
 
 ## Roadmap
@@ -99,14 +101,14 @@ Navigate to: http://127.0.0.1:3002/
 - [ ] Raspberry Pi Deployment Instructions
 
 #### Wishlist
-- [] View counter; track viewage metrics for each user and sitewide.
-- [] Shadow profile creation; track users even without signup.
-- [] Serve customized pages for every user; what videos they've watched, how far they were in each video they have, etc.
-- [] Audio-only service.
-- [] Auto-transcription service.
-- [] Import/retrieve script/subtitles.
-- [] Audio-normalization.
-- [] Animation frames insertion.
-- [] Serve multiple video qualities.
-- [] Serve outside of LAN.
-- [] Social media link friendly.
+- [ ] View counter; track viewage metrics for each user and sitewide.
+- [ ] Shadow profile creation; track users even without signup.
+- [ ] Serve customized pages for every user; what videos they've watched, how far they were in each video they have, etc.
+- [ ] Audio-only service.
+- [ ] Auto-transcription service.
+- [ ] Import/retrieve script/subtitles.
+- [ ] Audio-normalization.
+- [ ] Animation frames insertion.
+- [ ] Serve multiple video qualities.
+- [ ] Serve outside of LAN.
+- [ ] Social media link friendly.
