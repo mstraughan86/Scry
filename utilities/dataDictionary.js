@@ -34,6 +34,22 @@ const thesaurus = [
 //   tags: []
 // }
 
+
+// THIS IS THE ALIAS URL FORM THAT WE ARE DEALING WITH
+//
+var v = [
+  { '/video/0' : '/episode/alias'},
+  { '/video/1' : '/episode/pilot'},
+  { '/video/2' : '/episode/square-peg'},
+  //...
+];
+
+var b = [
+  { '/video/imdb_id' : '/show_title/episode_title'},
+  { '/video/imdb_id' : '/movie_title'},
+  //...
+];
+
 const database = [
   {
     title: `title`,
@@ -235,7 +251,6 @@ const getVideoIndexByTitle = title => {
 };
 const formatTitleForUrl = title => title.replace(/\W+/g, '-').toLowerCase();
 const getSeries = () => videoSeries;
-const getVideosList = () => thesaurus.map(o => Object.keys(o)[0]);
 const getVideoData = ref => {
   const titleCheck = doesThisVideoExist(ref);
   if (typeof ref == 'string' && titleCheck) return database[getVideoIndexByTitle(ref)];
@@ -243,11 +258,15 @@ const getVideoData = ref => {
   return null;
 };
 
+
+
 const getSeasonCarouselArray = (seasonNumber) => {
   return database
     .filter(e => e.season === seasonNumber)
     .map(e => ({title: e.title, url: e.aliasUrl, imageThumb: e.imageThumb}))
 };
+
+
 
 const getAliasUrlsList = () => database.map(o => {return {[o.url]: o.aliasUrl}});
 const getVideoFilePathFromId = id => database[id].video || 0; // This is if someone manually types in /video/number and its crazy high.
@@ -285,10 +304,16 @@ const getFullSeriesLoopPlaylist = (url) => {
 module.exports = {
   getSeries,
   getVideoData,
-  getVideosList,
+
   getSeasonCarouselArray,
   getAliasUrlsList,
   formatTitleForUrl,
   getVideoFilePathFromId,
   getFullSeriesLoopPlaylist
 };
+
+
+
+
+
+
