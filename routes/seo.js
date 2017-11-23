@@ -1,10 +1,13 @@
+const path = require('path');
+const fs = require('fs');
+const mongoose = require(path.join(__dirname, '..', 'utilities', 'mongoose.js'));
+const omni = require(path.join(__dirname, '..', 'utilities', 'omni.js'));
+
 let app = require('express')();
 
 let CronJob = require('cron').CronJob;
 let sm = require('sitemap');
 let robots = require('express-robots');
-
-let dataDictionary = require('../utilities/dataDictionary.js');
 
 const changeFrequency = {
   'default': 'always',
@@ -59,16 +62,24 @@ const generateStaticUrlArray = () => {
       });
     }
   });
-  dataDictionary.getVideosList().forEach((video) => {
-    let videoName = dataDictionary.formatTitleForUrl(video);
-    urlArray.push({
-      "url": '/episode/' + videoName,
-      "changefreq": changeFrequency['video'],
-      "priority": priority['video'],
-      "lastmodrealtime": true
-    });
-  });
-  return urlArray;
+
+  return mongoose.schemas.VideoObject
+    .find({})
+    .collation({locale: 'en', strength: 2})
+    .sort({show: 1})
+    .sort({season: 1})
+    .sort({episode: 1})
+    .then(result => {
+      result.map(data => {
+        return {
+          "url": `/${omni.formatToUrl(data.show)}/${omni.formatToUrl(data.title)}`,
+          "changefreq": changeFrequency['video'],
+          "priority": priority['video'],
+          "lastmodrealtime": true
+        }
+      });
+    })
+    .catch(err => {console.log('ERR: generateStaticUrlArray', err);});
 };
 
 sitemap = sm.createSitemap({
