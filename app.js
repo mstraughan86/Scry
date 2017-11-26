@@ -1,32 +1,32 @@
-let request = require('request');
-let path = require('path');
-let util = require('util');
-let fs = require('fs');
-let express = require('express');
-let app = express();
+const path = require('path');
+const fs = require('fs');
+require('dotenv').config();
 
-const mongoose = require('./utilities/mongoose');
+let util = require('util');       // probably remove!
 
-let dust = require('express-dustjs');
+const express = require('express');
+const app = express();
 
-let sass = require('node-sass-middleware');
-let bourbon = require('./lib').bourbon;
-let neat = require('./lib').neat;
-let bitters = require('./lib').bitters;
+const mongoose = require(path.join(__dirname, '.', 'utilities', 'mongoose.js'));
 
-let favicon = require('serve-favicon');
-let routes = require('./routes/routes');
-let alias = require('./routes/alias');
-let seo = require('./routes/seo');
-let serveStatic = require('serve-static');
-let bodyParser = require('body-parser');
-//let cookieParser = require('cookie-parser');
+const dust = require('express-dustjs');
+const sass = require('node-sass-middleware');
 
-//let dotenv = require('dotenv') // https://www.npmjs.com/package/dotenv
-//dotenv.config(); // Attaching things to process.env
-//can set things like NODE_ENV for production, development, etc.
-let port = process.env.PORT || 3002;
+const bourbon = require(path.join(__dirname, '.', 'lib')).bourbon;
+const neat = require(path.join(__dirname, '.', 'lib')).neat;
+const bitters = require(path.join(__dirname, '.', 'lib')).bitters;
 
+const favicon = require('serve-favicon');
+const routes = require(path.join(__dirname, '.', 'routes', 'routes.js'));
+const alias = require(path.join(__dirname, '.', 'routes', 'alias.js'));
+const seo = require(path.join(__dirname, '.', 'routes', 'seo.js'));
+
+const serveStatic = require('serve-static');
+const bodyParser = require('body-parser');
+//const cookieParser = require('cookie-parser');
+
+const projectName = process.env.WHITE_LABEL;
+const port = process.env.EXPRESS_PORT;
 /*
 
  @import "bourbon";
@@ -49,12 +49,12 @@ let port = process.env.PORT || 3002;
 /* DustJS Configuration ~~~~~~ */
 const dustInstance = dust._; // Instance object to attach properties to.
 dustInstance.config.whitespace = true; // .../dustjs/wiki/Dust-Tutorial#controlling-whitespace-suppression
-dustInstance.helpers.test = function (chunk, context, bodies, params) {return chunk.write('This is a test!')};
+dustInstance.helpers.test = (chunk, context, bodies, params) => {return chunk.write('This is a test!')};
 
 /* SASS Configuration ~~~~~~ */
 const sassConfig = { // https://github.com/sass/node-sass#options
-  src: path.join(__dirname, 'sass'),
-  dest: path.join(__dirname, 'public', 'css'),
+  src: path.join(__dirname, '.', 'sass'),
+  dest: path.join(__dirname, '.', 'public', 'css'),
   includePaths: [bourbon, neat, bitters],
   outputStyle: 'expanded',
   debug: false,
@@ -85,19 +85,19 @@ app.use(bodyParser.json());
 //app.use([path,] callback [, callback...])
 
 /* CSS/JS NPM Imports */
-app.use('/css', express.static(path.join(__dirname, 'node_modules', 'flickity', 'dist')));
-app.use('/js', express.static(path.join(__dirname, 'node_modules', 'flickity', 'dist')));
+app.use('/css', express.static(path.join(__dirname, '.', 'node_modules', 'flickity', 'dist')));
+app.use('/js', express.static(path.join(__dirname, '.', 'node_modules', 'flickity', 'dist')));
 
-app.use('/css', express.static(path.join(__dirname, 'node_modules', 'video.js', 'dist')));
-app.use('/js', express.static(path.join(__dirname, 'node_modules', 'video.js', 'dist')));
-app.use('/js', express.static(path.join(__dirname, 'node_modules', 'videojs-playlist', 'dist')));
+app.use('/css', express.static(path.join(__dirname, '.', 'node_modules', 'video.js', 'dist')));
+app.use('/js', express.static(path.join(__dirname, '.', 'node_modules', 'video.js', 'dist')));
+app.use('/js', express.static(path.join(__dirname, '.', 'node_modules', 'videojs-playlist', 'dist')));
 
 /* Public Resources ~~~~~~ */
-app.use('/', favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico'))); // Set favicon
-app.use('/', express.static(path.join(__dirname, 'public'))); // Public files: CSS, JS, Images
+app.use('/', favicon(path.join(__dirname, '.', 'public', 'assets', 'favicon.ico'))); // Set favicon
+app.use('/', express.static(path.join(__dirname, '.', 'public'))); // Public files: CSS, JS, Images
 
 /* Video Streaming ~~~~~~ */
-app.use('/files/:videoFile', function (req, res) {
+app.use('/files/:videoFile', (req, res) => {
   const videoFilePath = req.params.videoFile.substring(1).split('/');
   let videoPath = path.join(__dirname, ...videoFilePath);
   let stat = fs.statSync(videoPath);
@@ -138,9 +138,9 @@ app.use('/', seo); // Search Engine Optimization Routes
 //app.use('/videos', videos); // Example on how I can further segregate the routes.
 
 /* Errors ~~~~~~ */
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   let errorJSON = {
-    title: 'Scry | 404\'d',
+    title: `${projectName} | 404'd`,
     error: {
       type: 404,
       url: req.url,
@@ -149,9 +149,9 @@ app.use(function (req, res, next) {
   };
   res.status(404).render('error', errorJSON);
 });
-app.use(function (error, req, res, next) {
+app.use((error, req, res, next) => {
   let errorJSON = {
-    title: 'Scry | 500\'d',
+    title: `${projectName} | 500'd`,
     error: {
       type: 500,
       url: req.url,
@@ -163,10 +163,40 @@ app.use(function (error, req, res, next) {
 });
 
 /* MongoDB Initialization ~~~~~~ */
-mongoose.connect()
-  .then(() => {
-    let server = app.listen(port, function () {
-      console.log('Server running at http://127.0.0.1:' + port + '/');
+mongoose.initialize()
+  .then(mongoose.connect)
+  .then(() => app.listen(port, () => {
+    console.log('Express: Server running at http://127.0.0.1:' + port + '/');
+  }))
+  // .then(server => {
+  //   const VideoObject = mongoose.schemas.VideoObject;
+  //   return VideoObject.find({}, (err, result) => {
+  //     console.log('How many records do we total?: ', result.length);
+  //     const formatToUrl = t => t.replace(/[^a-zA-Z0-9_.-]/g, '-').toLowerCase();
+  //     let newResult = result.map(o => {
+  //       return {[`\/video\/${o.imdb_id}`]: `\/${formatToUrl(o.show)}\/${formatToUrl(o.title)}`};
+  //     });
+  //     result.forEach(i=>{console.log(i)});
+  //     newResult.forEach(i=>{console.log(i)});
+  //     return Promise.resolve(server);
+  //   });
+  // })
+  // .then(server => {
+  //   const VideoObject = mongoose.schemas.VideoObject;
+  //   return mongoose.remove(VideoObject, 'season', '1')
+  //     .then(Promise.resolve(server))
+  // })
+  .then(server => {
+    const VideoObject = mongoose.schemas.VideoObject;
+    return VideoObject.find({}, (err, result) => {
+      console.log('How many records do we total?: ', result.length);
+      result.forEach(i=>{console.log(i)});
+      console.log('How many records do we total?: ', result.length);
+      return Promise.resolve(server);
     });
   })
+  .then((server) => {
+
+  })
+  .then(server => {})
   .catch(err => {console.log(err)});
