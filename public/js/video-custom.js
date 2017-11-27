@@ -24,7 +24,10 @@ fetch("/video/playlist",
       'Content-Type': 'application/json'
     },
     method: "POST",
-    body: JSON.stringify({path: window.location.pathname})
+    body: JSON.stringify({
+      show: document.title.split(" | ")[1].split(" - ")[0],
+      title: document.title.split(" | ")[1].split(" - ")[1]
+    })
   })
   .then(res => {
     if (res.ok) {
