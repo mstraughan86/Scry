@@ -101,6 +101,7 @@ Navigate to: http://127.0.0.1:3002/
 - [ ] Raspberry Pi Deployment Instructions
 - [ ] Remove ffmpeg Windows files in ```/lib```
 - [ ] Write ffmpeg installation instructions/script
+- [ ] Add default Google Sheets spreadsheet for data to go along with the Pexels.com media data
 
 #### Wishlist
 - [ ] View counter; track viewage metrics for each user and sitewide.
